@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/bootstrap.css")" type="text/css" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/workers.css")" type="text/css" />
+    <title>@ViewBag.Title</title>
+    <style>
+        div{
+            padding:1%;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <a href="/Home/Index" class="btn btn-primary">Головна</a>
+        <hr />
+    </div>
+
+    <div>
+        @RenderBody()
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+﻿@model MVCTovarsNavigation.Models.Tovar
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<h2>Редагування товару № @Model.ID</h2>
+
+
+@using (Html.BeginForm("Edit", "Admin", FormMethod.Post))
+{
+    <fieldset>
+        @Html.HiddenFor(t => t.ID)
+        <ul>
+            <li>
+                <p>@Html.LabelFor(t => t.Name, "Назва продукту")</p>
+                @Html.EditorFor(t => t.Name);
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </li>
+            <li>
+                <p>@Html.LabelFor(t => t.Prize, "Ціна продукту")</p>
+                @Html.EditorFor(t => t.Prize);
+                @Html.ValidationMessageFor(model => model.Prize, "", new { @class = "text-danger" })
+            </li>
+            <li>
+                <p>@Html.LabelFor(t => t.Quantity, "Кількість продукту на складі")</p>
+                @Html.EditorFor(t => t.Quantity);
+                @Html.ValidationMessageFor(model => model.Quantity, "", new { @class = "text-danger" })
+            </li>
+            <li>
+                <p>@Html.LabelFor(t => t.Desc, "Опис продукту")</p>
+                @Html.EditorFor(t => t.Desc);
+                @Html.ValidationMessageFor(model => model.Desc, "", new { @class = "text-danger" })
+            </li>
+            <li>
+                <p>@Html.LabelFor(model => model.ID_Producer, "ID_Producer", htmlAttributes: new { @class = "control-label col-md-2" })</p>
+                @Html.DropDownList("ID_Producer", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ID_Producer, "", new { @class = "text-danger" })
+            </li>
+            <li>
+                <p>@Html.LabelFor(model => model.ID_Country, "ID_Country", htmlAttributes: new { @class = "control-label col-md-2" })</p>
+                @Html.DropDownList("ID_Country", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ID_Country, "", new { @class = "text-danger" })
+            </li>
+            <li>
+                <button name="action" value="action_yes">Відредагувати</button>
+                <button name="action" value="action_cancel">Відмінити</button>
+            </li>
+        </ul>
+    </fieldset>
+}

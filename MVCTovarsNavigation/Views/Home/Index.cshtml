@@ -1,0 +1,26 @@
+﻿@model MVCTovarsNavigation.Models.IndexViewModel
+@using MVCTovarsNavigation.Helpers
+@{
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+<div>
+    <form method="get">
+        <label>Введіть що міститься у назві товару</label>
+        @Html.TextBox("Name");
+        <label>Виберіть виробника</label>
+        @Html.DropDownList("producer", Model.Producers as SelectList)
+
+        <label>Виберіть країну</label>
+        @Html.DropDownList("country", Model.Countries as SelectList)
+
+        <input type="submit" value="Показати" class="btn btn-primary">
+    </form>
+    <a href="/Admin/Create" class="btn btn-primary">Додати</a>
+    <br />
+    <br />
+    @Html.DisplayList4(Model)
+</div>
+
+<div>
+    @Html.PageLinks(Model.PageInfo, x => Url.Action("Index", new { producer = Request.QueryString["producer"], country = Request.QueryString["country"], page = x }))
+</div>
